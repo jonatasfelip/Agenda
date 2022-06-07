@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+
+    <script>
+        var menu = "Menu\n 1 - Gravar\n 2 - Listar\n 3 - Buscar\n 4 - Excluir\n 5 - Sair\n Informe a opção:";
+        var registro = new Array;
+        var nome = "";
+        var celular = "";
+        var exibicao = "";
+        var buscar_nome = "";
+        var remover_nome = "";
+
+        do{
+            opcao = parseInt(prompt(menu));
+            exibicao = "";
+            if (opcao == 1){
+                nome = prompt("Informe o nome:");
+
+                celular = prompt("Informe o número do celular:");
+
+                registro.push([nome,celular]);
+            }
+            else if(opcao == 2){
+                for (let i=0; i<registro.length; i++){
+                    exibicao += `Pessoa ${i+1}: \nNome: ${registro[i][0]} \nTelefone: ${registro[i][1]}\n\n`;
+                }
+                alert(exibicao);
+            } 
+            else if(opcao == 3){
+                buscar_nome = prompt("Informe o nome que você deseja buscar na agenda: ");
+                var indice_buscar = -1;
+
+                for (let i=0; i<registro.length; i++){
+                    if (registro[i][0] == buscar_nome){
+                        indice_buscar = i;
+                    }
+                }
+                if (indice_buscar != -1){
+                    alert(`Encontrado(a)!\nNome: ${registro[indice_buscar][0]} \nTelefone: ${registro[indice_buscar][1]}`);
+                }
+                else{
+                    alert("Tente novamente!");
+                }
+            }
+            else if(opcao == 4){
+                remover_nome = prompt("Informe o nome que você deseja remover da agenda: ");
+                var indice_remover = -1;
+
+                for (let i=0; i<registro.length; i++){
+                    if (registro[i][0] == remover_nome){
+                        indice_remover = i;
+                    }
+                }
+    
+                if (indice_remover != -1){
+                    registro.splice(indice_remover,1);
+                    alert("Remoção feita!");
+                }
+                else{
+                    alert("Tente novamente");
+                }
+            }
+            else{
+                if (opcao == 5){
+                    break;
+                }
+                else{
+                    alert("Informe uma opção válida!");
+                }
+            }
+        }while(opcao!=5);
+        alert("Agenda finalizada");
+    </script>
+</head>
+
+<body>
+    
+</body>
+</html>
